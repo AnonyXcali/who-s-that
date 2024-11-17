@@ -12,7 +12,7 @@ export default async function Play({
 }: PlayProps) {
   const { category } = await searchParams || "default"; // Provide a fallback for `category`
   const response = await fetch(
-    `http://localhost:3000/api/create?type=${category}`
+    `${process.env.BACKEND_URL}/api/create?type=${category}`
   );
   const data: { hints: string[]; name: string } = await response.json();
 
