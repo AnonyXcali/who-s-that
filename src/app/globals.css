@@ -344,14 +344,14 @@ body {
   }
 
   100% {
-    transform: translate(-550, -320);
+    transform: translate(-550px, -320px);
     font-size: 45px;
   }
 }
 
 @keyframes moveToCenter {
   0% {
-    transform: translate(-550, -320);
+    transform: translate(-550px, -320px);
   }
 
   100% {
@@ -363,7 +363,7 @@ body {
 
 @keyframes moveToCenterMobile {
   0% {
-    transform: translate(-100, -300);
+    transform: translate(-100px, -300px);
   }
 
   100% {
@@ -378,7 +378,7 @@ body {
   }
 
   100% {
-    transform: translate(-100, -300);
+    transform: translate(-100px, -300px);
     font-size: 30px;
   }
 }
