@@ -1,22 +1,24 @@
-import { AppContainer } from "@/components"
-import { AppContextProvider } from "@/context/appContext"
+import { AppContainer } from "@/components";
+import { AppContextProvider } from "@/context/appContext";
 
-export const revalidate = 0
+export const revalidate = 0;
 
-type PlayProps = { searchParams: { [key: string]: string | undefined } }
+type PlayProps = {
+  searchParams: Promise<Record<string, string | undefined>>; // Assume searchParams is a Promise
+};
 
 export default async function Play({
-  searchParams
-} : PlayProps) {
-  const { category } = searchParams
-  console.log("category", category)
-  const response = await fetch(`http://localhost:3000/api/create?type=${category}`)
-  const data: { hints: string[], name: string } = await response.json()
+  searchParams,
+}: PlayProps) {
+  const { category } = await searchParams || "default"; // Provide a fallback for `category`
+  const response = await fetch(
+    `http://localhost:3000/api/create?type=${category}`
+  );
+  const data: { hints: string[]; name: string } = await response.json();
+
   return (
     <AppContextProvider>
-      <AppContainer
-        response={data}
-      />
+      <AppContainer response={data} />
     </AppContextProvider>
-  )
+  );
 }

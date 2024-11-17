@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link";
-import { DrawerComponent, HowToPlay } from "@/components";
 import { categories } from "@/data";
 
 export default function Categories() {

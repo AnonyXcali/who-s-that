@@ -57,7 +57,9 @@ export default function Input() {
       >
         Submit
       </button>
-      <DrawerComponent>
+      <DrawerComponent
+        hideDrawerHeader={false}
+      >
           <div
             style={{
               height: "500px",
