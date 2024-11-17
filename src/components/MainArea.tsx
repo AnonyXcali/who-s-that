@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, memo } from 'react'
+import Link from 'next/link'
 import axios from "axios"
 import ImageCircle from './MainAreaComponents/ImageCircle'
 import "./styles.css"
@@ -61,12 +62,12 @@ const MainArea = memo(({
       />
 
       {userHasGuessed && (
-        <button
+        <Link
+          href="/categories"
           id="playAgain"
-          onClick={handleGameReset}
         >
           Play Again?
-        </button>
+        </Link>
       )}
       
     </div>

@@ -407,6 +407,16 @@ body {
   }
 }
 
+.toast-title, .toast-description, .dialog-title, .dialog-description,
+.drawer-title, .drawer-description {
+  font-family: var(--font-open-sans);
+}
+
+.toast-warning {
+  background: red;
+  color: white;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

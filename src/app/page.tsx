@@ -13,7 +13,7 @@ export default function Home() {
         <div
           className="hero-container-title"
         >
-          <h1>Who&apos;s that?</h1>
+          <h1>zwenti!</h1>
           <p className="xcaliLabsTitle">
               by xcalilabs
               <span>

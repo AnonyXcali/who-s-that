@@ -27,7 +27,7 @@ export default function DrawerComponent({
   children,
   title = "Hints!",
   drawerTitle = "Hints!",
-  drawerDescription = "Use the hints to guess the person!.",
+  drawerDescription = "Each hint will cost you 2 questions tokens!.",
   customClassName = "hint",
   customDrawerTitleClassName = "drawer-title",
   hideDrawerHeader = false,
@@ -46,7 +46,7 @@ export default function DrawerComponent({
           }}
         >
           <DrawerTitle
-            className={customDrawerTitleClassName}
+            className={customDrawerTitleClassName || 'drawer-title'}
           >
             {drawerTitle}
           </DrawerTitle>

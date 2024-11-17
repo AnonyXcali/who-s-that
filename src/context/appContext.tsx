@@ -1,5 +1,6 @@
 "use client"
 import { useState, createContext, useContext, useEffect, } from "react"
+import { useToast } from "@/hooks/use-toast"
 import axios from "axios"
 import React from "react"
 
@@ -43,6 +44,7 @@ type AppContextProps = {
 export function AppContextProvider({
   children,
 }: AppContextProps): React.ReactNode {
+  const { toast } = useToast()
   const [questionCount, updateQuestionCount] = useState<number>(20)
   const [userHasGuessed, setUserGuessStatus] = useState<boolean>(false)
   const [userInput, updateInput] = useState<string | undefined>("")
@@ -61,7 +63,6 @@ export function AppContextProvider({
       return
     }
 
-    updateQuestionCount(questionCount - 1)
     setEvaluating(true)
     /**Call api */
     const {
@@ -76,10 +77,24 @@ export function AppContextProvider({
     setEvaluating(false)
     updateInput("")
     setTemperature(response.data.temperature || "")
+    
 
     if(response.data.temperature && response.data.temperature === "crown") {
       setUserGuessStatus(true)
+      return
     }
+    
+    if(response.data.temperature && response.data.temperature === "unknown") {
+      toast({
+        title: "I'm sorry!",
+        description: `I didn't understand the question, don't worry your question token was unused.
+        Please make sure your asking a yes or no question.`,
+        className: "toasty toast-warning"
+      })
+      return
+    }
+
+    updateQuestionCount(questionCount - 1)
   }
 
   useEffect(() => {

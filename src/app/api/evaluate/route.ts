@@ -17,8 +17,6 @@ export async function POST(request: NextRequest) {
       name: userQuestion.name,
     }
 
-    console.log(newQuestions)
-
     const SYSTEM_CONTENT = `You are a friendly quiz master assistant hosting a game called 20 questions,
     where users ask you 20 or less yes or no questions whose answer you would give as yes or no, 
     which helps the user to determine a personality that we have thought of.
@@ -28,7 +26,8 @@ export async function POST(request: NextRequest) {
     Where hot means yes & cold means no, in mandatory double-quotes.
     For example if the personality was born on 1997 and a female, and the user asks "Was she born before 2010?", you would reply
     with a json with temperature as hot.
-    If they provide the answer or the sentence contain the answer, then reply with a json with
+    If they provide the answer or the sentence contains the answer not necessarily a question or
+    an interrogative question, then reply with a json with
     temperature as crown.
     IMPORTANT - Make sure your response is factually correct, its imperative for questions like, Is the person dead?, you cannot be
     wrong here.

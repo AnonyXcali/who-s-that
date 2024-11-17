@@ -15,7 +15,7 @@ export default function Navbar() {
       <h1
         className='title-name'
       >
-        Who&apos;s that?
+        zwenti!
       </h1>
       <h2 className='questions-left'>{questionCount}</h2>
     </div>

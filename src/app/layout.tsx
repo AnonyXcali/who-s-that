@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster"
 import { Blaka, Righteous, Open_Sans } from 'next/font/google';
 import "./globals.css";
 
@@ -49,17 +50,7 @@ export default function RootLayout({
         className={`antialiased ${blaka.variable} ${righteous.variable} ${openSans.variable}`}
       >
         {children}
-        <footer>
-          {/* <div className="">
-            <p className="xcaliLabsTitle">
-              by xcalilabs
-              <span>
-                <Image src="/beakerIcon.png" alt="icon" width={18} height={18} />
-              </span>
-            </p>
-          </div>
-        */}
-        </footer>
+        <Toaster />
       </body>
     </html>
   );

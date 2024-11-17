@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react'
 import DrawerComponent from './Drawer'
 import { useQuestionContext } from '@/context/appContext'
+import HintsSection from './HintsSection'
 
 export default function Input() {
   const ctaRef = useRef<HTMLButtonElement>(null)
@@ -34,8 +35,6 @@ export default function Input() {
     }
   }, [temperature])
 
-  console.log("currentGuessData", currentGuessData)
-
   return (
     <div
       id="app-submitArea"
@@ -60,24 +59,9 @@ export default function Input() {
       <DrawerComponent
         hideDrawerHeader={false}
       >
-          <div
-            style={{
-              height: "500px",
-              padding: "20px",
-              overflow: "scroll",
-            }}
-          >
-            {currentGuessData && currentGuessData.hints.map((hint, idx) => (
-              <p 
-                key={idx}
-                style={{
-                  fontSize: "20px",
-                }}
-              >
-                {hint}
-              </p>
-            ))}
-          </div>
+          <HintsSection
+            hints={currentGuessData?.hints as string[]}
+          />
       </DrawerComponent>
     </div>
   )
