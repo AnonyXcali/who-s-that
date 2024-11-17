@@ -1,0 +1,75 @@
+#imageCircle {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 100%; */
+  /* animation: popUp 5s linear 2s infinite alternate; */
+  
+
+  @media(max-width: 1024px) {
+    padding: 20px;
+    /* width: 50%; */
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.invert {
+  filter: invert(1);
+}
+
+.bgClass {
+  position: absolute;
+  opacity: 0.5;
+  width: 940px;
+  height: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  gap: 3px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(50% at 50% 50%);
+
+
+  @media (max-width: 768px) {
+    width: 100vw;  
+    height: 300px;
+    clip-path: none;
+  }
+
+  div {
+    margin-right: 10px;
+    transform: rotateX(300)
+  }
+  
+
+  p {
+    /* margin: 0; */
+    font-size: 40px;
+
+    @media(max-width: 768px) {
+      font-size: 30px;
+    }
+  }
+}
+
+.hot {
+  color: orange;
+  position: relative;
+  animation: burn 0.5s infinite ease-out alternate-reverse;
+}
+
+.cold {
+  color: aqua;
+  position: relative;
+  animation: shake 0.5s infinite ease-out alternate-reverse;
+}
+
+.guess {
+  opacity: 0.4;
+}

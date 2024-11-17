@@ -1,0 +1,267 @@
+#appArea {
+  height: 100%;
+  /* width: 500px; */
+  margin: 0 auto;
+  padding: 50px 50px 0px 50px;
+
+  @media(max-width: 1024px) {
+    width: 100vw;
+    padding: 5px;
+  }
+}
+
+#app-navbar, #app-submitArea {
+  width: 100%;
+}
+
+#app-navbar {
+  height: 60px;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-name {
+  font-size: 45px; 
+}
+
+.questions-left {
+  font-size: 45px;
+}
+
+#app-mainArea {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media(max-width: 1024px) {
+    height: 500px;
+  }
+}
+
+#app-submitArea {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @media(max-width: 1024px) {
+    height: max-content;
+  }
+}
+
+.userInput {
+  display: block;
+  padding: 9px;
+  height: 50px;
+  flex-grow: 5;
+  font-size: 15px;
+  color: white;
+  background-color: black;
+  /* border: 1px solid white; */
+  /* https://smoothshadows.com/#djEsMSw1LDAuMDgsMjQsMzIsMCwjMDMwNzEyLCNmM2Y0ZjYsI2ZmZmZmZiwy */
+  box-shadow: 0px 1px 1px rgba(3, 7, 18, 0.02),
+  0px 5px 4px rgba(3, 7, 18, 0.03),
+  0px 12px 9px rgba(3, 7, 18, 0.05),
+  0px 20px 15px rgba(3, 7, 18, 0.06),
+  0px 32px 24px rgba(3, 7, 18, 0.08);
+
+  border-radius: 8px;
+  /* font-style: italic; */
+  resize: none;
+  font-size: 20px;
+
+  &::placeholder {
+    font-size: 20px;
+    color: white;
+    opacity: 0.6;
+  }
+}
+
+.userSubmitCTA, .hint {
+  border: 0.5px solid black;
+  cursor: pointer;
+  background-color: #6362ff;
+  color: white;
+  border-radius: 8px;
+  height: 50px;
+  width: 40%;
+  font-size: 20px;
+  box-shadow: 0px 1px 1px rgba(3, 7, 18, 0.02),
+  0px 5px 4px rgba(3, 7, 18, 0.03),
+  0px 12px 9px rgba(3, 7, 18, 0.05),
+  0px 20px 15px rgba(3, 7, 18, 0.06),
+  0px 32px 24px rgba(3, 7, 18, 0.08);
+  transition: background-color 0.5s ease-out;
+
+
+  @media(max-width: 1024px) {
+    width: 100%;
+  }
+
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    
+    &:hover {
+      background-color: inherit;
+    }
+  }
+}
+
+.hint {
+  width: 100px;
+  background-color: color(srgb 1 0.385 0.385);
+
+  @media(max-width: 1024px) {
+    width: 100%;
+  }
+}
+
+.win-text {
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+}
+
+.crown {
+  position: relative;
+  left: -17px;
+}
+
+
+#playAgain {
+  color: black;
+  cursor: pointer;
+  background: #fff;
+  border: 0.5px solid black;
+  height: 50px;
+  width: 150px;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  transition: width 0.5s ease-out;
+
+  &:hover {
+    width: 200px;
+  }
+}
+
+.how-to-play-container {
+  height: 50h;
+  font-family: var(--font-open-sans), 'Times New Roman', Times, serif;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: black;
+
+  .header-htp {
+    p {
+      font-size: 30px;
+      line-height: 40px;
+      font-weight: bold;
+
+      @media(max-width: 768px) {
+        font-size: 20px;
+        line-height: normal;
+      }
+    }
+  }
+
+  .htp-mid {
+    h2 {
+      font-size: 25px;
+
+      @media(max-width: 768px) {
+        font-size: 18px;
+        line-height: normal;
+      }
+    }
+  }
+
+  .htp-main {
+    ul {
+      list-style: lower-roman;
+      padding-left: 20px;
+    }
+    ul li {
+      font-style: italic;
+      font-size: 15px;
+    }
+  }
+
+  .htp-footer {
+    padding-top: 30px;
+    p {
+      float: right;
+      font-size: 15;
+    }
+  }
+}
+
+.loading-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  min-height: 800px;
+  border-radius: 8px;
+  padding: 20px;
+  border: 2px solid white;
+
+  .loading-container-title h1 {
+    font-size: 8rem;
+    color: white;
+    margin: 0;
+    animation: moveToCenter 0.5s ease 0s forwards;
+
+    @media(max-width: 1024px) {
+      font-size: 4rem;
+      animation: moveToCenterMobile 0.5s ease 0s forwards;
+
+    }
+  }
+
+  .xcaliLabsTitle {
+    float: right;
+    top: -40px;
+    opacity: 0;
+    /* animation: disappear 0.2s ease-in-out 0s forwards; */
+
+    @media(max-width: 1024px) {
+      top: -10px;
+      font-size: 20px;
+    }
+  }
+
+  p {
+    color: white;
+    font-family: var(--font-righteous), Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+  }
+
+  @media(max-width: 1024px) {
+    padding: 5px;
+    min-height: unset;
+    height: 90vh;
+    border: none;
+  }
+}
