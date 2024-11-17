@@ -71,7 +71,7 @@ export function AppContextProvider({
       text: userInput as string,
       name: name as string,
     }
-    const response = await axios.post(`${process.env.BACKEND_URL}/api/evaluate`, payload)
+    const response = await axios.post(`/api/evaluate`, payload)
 
     setEvaluating(false)
     updateInput("")
