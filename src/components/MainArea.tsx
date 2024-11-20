@@ -69,7 +69,7 @@ const MainArea = memo(({
         questionCount={questionCount}
       />
 
-      {userHasGuessed && (
+      {(userHasGuessed || !questionCount) && (
         <Link
           href="/categories"
           id="playAgain"
