@@ -14,7 +14,7 @@ type GuessData = {
 }
 
 type HintsSectionProps = {
-  hints: Array<HintProp>,
+  hints: Array<HintProp> | undefined,
 }
 
 export default function HintsSection({
