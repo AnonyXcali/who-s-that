@@ -1,11 +1,10 @@
 import Image from "next/image"
 import Link from "next/link";
 import { DrawerComponent, HowToPlay } from "@/components";
-import { auth } from '@clerk/nextjs/server'
+// import { auth } from '@clerk/nextjs/server'
 
 export default async function Home() {
-  const { userId } = await auth()
-
+  // const { userId } = await auth()
   return (
     <div
       id="landing-page-container"
