@@ -25,20 +25,11 @@ export default function HintsSection({
   const {
     questionCount,
     updateQuestionCount,
-    mappedHints,
-    setHints,
     currentGuessData,
     setCurrentGuessData,
+    hintCost,
+    setHintCost,
   } = useQuestionContext()
-
-  // useEffect(() => {
-  //   const mapped = hints.map((hint) => ({
-  //     text: hint,
-  //     isUsed: false,
-  //   }))
-
-  //   setHints(mapped)
-  // }, [])
   
 
   return (
@@ -66,17 +57,15 @@ export default function HintsSection({
                     e.stopPropagation()
                     if(e.currentTarget.className === "hint-box") {
                       if(!hint.isUsed) {
-                        const currentCount = questionCount - 2
+                        const currentCount = questionCount - hintCost
                         updateQuestionCount(currentCount)
                         toast({
                           title: "Question Tokens Used!",
-                          description: `2 used, ${currentCount} left!`,
+                          description: `${hintCost} used, ${currentCount} left!`,
                           className: "toasty"
                         })
-                        // setHints((item: HintProp[]) => {
-                        //   item[idx].isUsed = true
-                        //   return item
-                        // })
+
+                        setHintCost(hintCost + 1)
 
                         let curr = {
                           name: currentGuessData?.name,

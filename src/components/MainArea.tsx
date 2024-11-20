@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, memo } from 'react'
 import Link from 'next/link'
-import axios from "axios"
+import Revealed from './Revealed'
 import ImageCircle from './MainAreaComponents/ImageCircle'
 import "./styles.css"
 import { useQuestionContext } from '@/context/appContext'
@@ -27,14 +27,12 @@ const MainArea = memo(({
 }: MainAreaProps) => {
 
   const {
-    setUserGuessStatus,
     userHasGuessed,
     questionCount,
     temperature,
     evaluating,
     setCurrentGuessData,
-    updateQuestionCount,
-    setTemperature,
+    currentGuessData,
   } = useQuestionContext()
 
   useEffect(() => {
@@ -42,13 +40,6 @@ const MainArea = memo(({
     //TODO
   }, [data])
   
-  // const handleGameReset = async () => {
-  //   const resetData: { hints: Array<string>, name: string } = await axios.get('http://192.168.1.127:3000/api/create')
-  //   setCurrentGuessData(resetData)
-  //   updateQuestionCount(20)
-  //   setUserGuessStatus(false)
-  //   setTemperature("")
-  // }
   
   return (
     <div
@@ -68,6 +59,10 @@ const MainArea = memo(({
         evaluating={evaluating}
         questionCount={questionCount}
       />
+
+      {!questionCount && currentGuessData && (
+        <Revealed name={currentGuessData?.name as string}/>
+      )}
 
       {(userHasGuessed || !questionCount) && (
         <Link

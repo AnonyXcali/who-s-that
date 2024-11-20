@@ -1,5 +1,5 @@
 import OpenAI from "openai"
-import { personalities, historical, books } from "@/data";
+import { personalities, historical, books, sportspersons } from "@/data";
 
 const SYSTEM_ROLE = "system"
 
@@ -16,6 +16,9 @@ const getPerson = (type: string) => {
     case "historical":
       randomNumber = Math.floor(Math.random() * historical.length);
       return historical[randomNumber]
+    case "sports":
+      randomNumber = Math.floor(Math.random() * sportspersons.length);
+      return sportspersons[randomNumber]
     case "actors":
     default:
       randomNumber = Math.floor(Math.random() * personalities.length);
@@ -41,6 +44,7 @@ export async function GET(request: Request) {
     of an array of 10 strings, containing 10 hints at max, where each hint progressively becomes easier to determine
     the ${personality}, stored in a json, with a key called hints.
     IMPORTANT - make sure the ${personality} is NO WHERE MENTIONED in the hint,
+    IMPORTANT - make sure the ${personality} and their gender are no where mentioned in the hint,
     IMPORTANT - make sure the json is parse-able like "{ hints: [.....]}",
     don't add new lines as its breaking the API.`
 
@@ -53,7 +57,7 @@ export async function GET(request: Request) {
 
     const responsePayload = {
       name: personality,
-      hints: [...response.hints],
+      hints: [...response.hints].slice(0, 5),
     }
       
     return Response.json(responsePayload)

@@ -14,6 +14,7 @@ export default function Input() {
     handleSubmit,
     temperature,
     currentGuessData,
+    hintCost,
   } = useQuestionContext()
 
   const handleText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -58,6 +59,7 @@ export default function Input() {
       </button>
       <DrawerComponent
         hideDrawerHeader={false}
+        drawerDescription={hintCost > 5 ? "All hints are used!" : `Next hint will cost ${hintCost} question token${hintCost === 1 ? "" : "s"}!`}
       >
           <HintsSection
             hints={currentGuessData?.hints}

@@ -37,6 +37,8 @@ type QuestionStore = {
   setTemperature: React.Dispatch<React.SetStateAction<string | undefined>>
   mappedHints: HintProp[],
   setHints: React.Dispatch<React.SetStateAction<HintProp[]>>,
+  setHintCost: React.Dispatch<React.SetStateAction<number>>,
+  hintCost: number,
 }
 
 const QuestionContext = createContext<QuestionStore | undefined>(undefined)
@@ -61,6 +63,7 @@ export function AppContextProvider({
   const [temperature, setTemperature] = useState<string | undefined>("")
   const [evaluating, setEvaluating] = useState<boolean>(false)
   const [mappedHints, setHints] = useState<HintProp[]>([])
+  const [hintCost, setHintCost] = useState<number>(1)
 
 
   const handleInput = (value: string | undefined) => {
@@ -132,6 +135,8 @@ export function AppContextProvider({
         setTemperature,
         mappedHints,
         setHints,
+        setHintCost,
+        hintCost,
       }}
     >
       {children}
