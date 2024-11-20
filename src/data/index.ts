@@ -366,9 +366,6 @@ export const categories = [{
   title: "Actors",
   type: "actors",
 }, {
-  title: "Singers",
-  type: "singers",
-}, {
   title: "Sports",
   type: "sports",
 }]

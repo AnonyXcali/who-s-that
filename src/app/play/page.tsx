@@ -16,9 +16,17 @@ export default async function Play({
   );
   const data: { hints: string[]; name: string } = await response.json();
 
+  const modifiedData = {
+    name: data.name,
+    hints: data.hints.map((hint) => ({
+      text: hint,
+      isUsed: false,
+    }))
+  }
+
   return (
     <AppContextProvider>
-      <AppContainer response={data} />
+      <AppContainer response={modifiedData} />
     </AppContextProvider>
   );
 }

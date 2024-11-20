@@ -11,9 +11,16 @@ type MainAreaProps = {
 }
 
 type GuessData = {
-  hints: Array<string>,
+  hints: Array<HintProp>,
   name: string,
 }
+
+type HintProp = {
+  text: string,
+  isUsed: boolean,
+}
+
+
 
 const MainArea = memo(({
   data,
@@ -32,15 +39,16 @@ const MainArea = memo(({
 
   useEffect(() => {
     setCurrentGuessData(data)
+    //TODO
   }, [data])
   
-  const handleGameReset = async () => {
-    const resetData: { hints: Array<string>, name: string } = await axios.get('http://192.168.1.127:3000/api/create')
-    setCurrentGuessData(resetData)
-    updateQuestionCount(20)
-    setUserGuessStatus(false)
-    setTemperature("")
-  }
+  // const handleGameReset = async () => {
+  //   const resetData: { hints: Array<string>, name: string } = await axios.get('http://192.168.1.127:3000/api/create')
+  //   setCurrentGuessData(resetData)
+  //   updateQuestionCount(20)
+  //   setUserGuessStatus(false)
+  //   setTemperature("")
+  // }
   
   return (
     <div

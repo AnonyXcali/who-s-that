@@ -60,7 +60,7 @@ export default function Input() {
         hideDrawerHeader={false}
       >
           <HintsSection
-            hints={currentGuessData?.hints as string[]}
+            hints={currentGuessData?.hints}
           />
       </DrawerComponent>
     </div>

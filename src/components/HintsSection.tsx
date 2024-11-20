@@ -3,42 +3,50 @@ import DialogComponent from './Dialog'
 import { useQuestionContext } from '@/context/appContext'
 import { useToast } from "@/hooks/use-toast"
 
-type HintsSectionProps = {
-  hints: string[],
-}
-
 type HintProp = {
   text: string,
   isUsed: boolean,
+}
+
+type GuessData = {
+  hints: Array<HintProp>,
+  name: string | undefined,
+}
+
+type HintsSectionProps = {
+  hints: Array<HintProp>,
 }
 
 export default function HintsSection({
   hints,
 }: HintsSectionProps) {
   const { toast } = useToast()
-  const [mappedHints, setHints] = useState<HintProp[]>([])
-
-  useEffect(() => {
-    const mapped = hints.map((hint) => ({
-      text: hint,
-      isUsed: false,
-    }))
-
-    setHints(mapped)
-  }, [])
-  
 
   const {
     questionCount,
     updateQuestionCount,
+    mappedHints,
+    setHints,
+    currentGuessData,
+    setCurrentGuessData,
   } = useQuestionContext()
+
+  // useEffect(() => {
+  //   const mapped = hints.map((hint) => ({
+  //     text: hint,
+  //     isUsed: false,
+  //   }))
+
+  //   setHints(mapped)
+  // }, [])
+  
 
   return (
     <div>
       <ul
         className='hint-list'
       >
-        {mappedHints && mappedHints.map((hint, idx) => (
+        {hints && hints.map((hint, idx) => (
           <li
             key={idx}
             className={`hint-li${hint.isUsed && ` hint-used`}`}
@@ -65,10 +73,27 @@ export default function HintsSection({
                           description: `2 used, ${currentCount} left!`,
                           className: "toasty"
                         })
-                        setHints((item: HintProp[]) => {
-                          item[idx].isUsed = true
-                          return item
-                        })
+                        // setHints((item: HintProp[]) => {
+                        //   item[idx].isUsed = true
+                        //   return item
+                        // })
+
+                        let curr = {
+                          name: currentGuessData?.name,
+                          hints: currentGuessData?.hints?.map((hint, mapIdx) => {
+                            if(idx === mapIdx) {
+                              return {
+                                ...hint,
+                                isUsed: true,
+                              }
+                            }
+
+                            return hint
+                          })
+                        }
+
+                        setCurrentGuessData(curr)
+                        
                         return
                       }
                     }

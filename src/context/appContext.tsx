@@ -4,9 +4,15 @@ import { useToast } from "@/hooks/use-toast"
 import axios from "axios"
 import React from "react"
 
+type HintProp = {
+  text: string,
+  isUsed: boolean,
+}
+
+
 type GuessData = {
-  hints: Array<string>,
-  name: string,
+  hints: Array<HintProp> | undefined,
+  name: string | undefined,
 }
 
 type SubmitPayload = {
@@ -29,6 +35,8 @@ type QuestionStore = {
   setUserGuessStatus: React.Dispatch<React.SetStateAction<boolean>>
   updateQuestionCount: React.Dispatch<React.SetStateAction<number>>
   setTemperature: React.Dispatch<React.SetStateAction<string | undefined>>
+  mappedHints: HintProp[],
+  setHints: React.Dispatch<React.SetStateAction<HintProp[]>>,
 }
 
 const QuestionContext = createContext<QuestionStore | undefined>(undefined)
@@ -49,9 +57,11 @@ export function AppContextProvider({
   const [userHasGuessed, setUserGuessStatus] = useState<boolean>(false)
   const [userInput, updateInput] = useState<string | undefined>("")
   const [hints, updateHints] = useState<Array<string>>([])
-  const [currentGuessData, setCurrentGuessData] = useState<GuessData>()
+  const [currentGuessData, setCurrentGuessData] = useState<GuessData | undefined>()
   const [temperature, setTemperature] = useState<string | undefined>("")
   const [evaluating, setEvaluating] = useState<boolean>(false)
+  const [mappedHints, setHints] = useState<HintProp[]>([])
+
 
   const handleInput = (value: string | undefined) => {
     updateInput(value)
@@ -120,6 +130,8 @@ export function AppContextProvider({
         setUserGuessStatus,
         updateQuestionCount,
         setTemperature,
+        mappedHints,
+        setHints,
       }}
     >
       {children}

@@ -4,12 +4,17 @@ import MainArea from './MainArea'
 import Input from "./Input"
 import "./styles.css"
 
+type HintProp = {
+  text: string,
+  isUsed: boolean,
+}
+
 const AppContainer = memo(function AppContainer({
   response,
 } : {
   response: {
-    hints: Array<string>,
     name: string,
+    hints: Array<HintProp>,
   }
 }) {
   
