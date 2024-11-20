@@ -18,6 +18,7 @@ type GuessData = {
 type HintProp = {
   text: string,
   isUsed: boolean,
+  isAvailable: boolean,
 }
 
 

@@ -18,9 +18,10 @@ export default async function Play({
 
   const modifiedData = {
     name: data.name,
-    hints: data.hints.map((hint) => ({
+    hints: data.hints.map((hint, idx) => ({
       text: hint,
       isUsed: false,
+      isAvailable: !idx ? true : false,
     }))
   }
 

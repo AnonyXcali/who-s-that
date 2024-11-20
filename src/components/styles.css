@@ -351,3 +351,12 @@
     color: white;
   }
 }
+
+.hint-not-available {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  &hover {
+    color: black;
+    background-color: #fff;
+  }
+}

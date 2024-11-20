@@ -7,6 +7,7 @@ import "./styles.css"
 type HintProp = {
   text: string,
   isUsed: boolean,
+  isAvailable: boolean,
 }
 
 const AppContainer = memo(function AppContainer({

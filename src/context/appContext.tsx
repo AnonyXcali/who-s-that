@@ -7,6 +7,7 @@ import React from "react"
 type HintProp = {
   text: string,
   isUsed: boolean,
+  isAvailable: boolean,
 }
 
 
