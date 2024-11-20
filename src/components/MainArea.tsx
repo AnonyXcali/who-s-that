@@ -32,6 +32,7 @@ const MainArea = memo(({
     questionCount,
     temperature,
     evaluating,
+    setUserGuessStatus,
     setCurrentGuessData,
     currentGuessData,
   } = useQuestionContext()
@@ -69,6 +70,9 @@ const MainArea = memo(({
         <Link
           href="/categories"
           id="playAgain"
+          onClick={() => {
+            setUserGuessStatus(false)
+          }}
         >
           Play Again?
         </Link>

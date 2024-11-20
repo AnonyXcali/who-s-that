@@ -26,15 +26,16 @@ export async function POST(request: NextRequest) {
     Where hot means yes & cold means no, in mandatory double-quotes.
     For example if the personality was born on 1997 and a female, and the user asks "Was she born before 2010?", you would reply
     with a json with temperature as hot.
-    If they provide the answer or the sentence contains the answer not necessarily a question or
-    an interrogative question, then reply with a json with
-    temperature as crown.
+    IMPORTANT - If you don't understand the question, if the question is inappropriate or not a question at all, then reply with a json with
+    temperature as unknown.
     IMPORTANT - Make sure your response is factually correct, its imperative for questions like, Is the person dead?, you cannot be
     wrong here.
-    IMPORTANT - If you don't understand a question or If the question is inappropriate, then reply with a json with
-    temperature as unknown.
     IMPORTANT - make sure the json is parse-able like "{ temperature: cold }",
-    don't add new lines as its breaking the API.`
+    don't add new lines as its breaking the API.
+    WIN STATE - If they provide the answer or the sentence contains the answer (IT HAS TO BE THE FULL NAME) not necessarily a question or
+    an interrogative question, then reply with a json with
+    temperature as crown.
+    `
 
     const completion = await openai.chat.completions.create({
       messages: [

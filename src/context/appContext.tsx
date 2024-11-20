@@ -102,7 +102,7 @@ export function AppContextProvider({
       toast({
         title: "I'm sorry!",
         description: `I didn't understand the question, don't worry your question token was unused.
-        Please make sure your asking a yes or no question.`,
+        Please make sure you are asking a yes or no question.`,
         className: "toasty toast-warning"
       })
       return
