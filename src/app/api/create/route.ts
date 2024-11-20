@@ -30,12 +30,17 @@ export async function GET(request: Request) {
 
     const type = searchParams.get("type")
 
-    const personality = getPerson(type as string)
+    let personality = getPerson(type as string)
+
+    while(!personality) {
+      personality = getPerson(type as string)
+    }
 
     const SYSTEM_CONTENT = `You are a friendly hint providing assistant, whose task is to provide hints to users
     helping to identify ${personality}. You will provide them in the format
     of an array of 10 strings, containing 10 hints at max, where each hint progressively becomes easier to determine
-    the ${personality}, stored in a json, with a key called hints. 
+    the ${personality}, stored in a json, with a key called hints.
+    IMPORTANT - make sure the ${personality} is NO WHERE MENTIONED in the hint,
     IMPORTANT - make sure the json is parse-able like "{ hints: [.....]}",
     don't add new lines as its breaking the API.`
 
