@@ -1,8 +1,11 @@
 import Image from "next/image"
 import Link from "next/link";
 import { DrawerComponent, HowToPlay } from "@/components";
+import { auth } from '@clerk/nextjs/server'
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth()
+
   return (
     <div
       id="landing-page-container"
@@ -45,3 +48,33 @@ export default function Home() {
     </div>
   );
 }
+
+// import { createUserMessage, deleteUserMessage } from '@/lib/action'
+// import { db } from '../../db'
+
+// export default async function Home() {
+//   const { userId } = await auth()
+//   if (!userId) throw new Error('User not found')
+//   const existingMessage = await db.query.UserMessages.findFirst({
+//     where: (messages, { eq }) => eq(messages.user_id, userId),
+//   })
+
+//   return (
+//     <main>
+//       <h1>Neon + Clerk Example</h1>
+//       {existingMessage ? (
+//         <div>
+//           <p>{existingMessage.message}</p>
+//           <form action={deleteUserMessage}>
+//             <button>Delete Message</button>
+//           </form>
+//         </div>
+//       ) : (
+//         <form action={createUserMessage}>
+//           <input type="text" name="message" placeholder="Enter a message" />
+//           <button>Save Message</button>
+//         </form>
+//       )}
+//     </main>
+//   )
+// }

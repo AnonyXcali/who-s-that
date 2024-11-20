@@ -35,6 +35,7 @@ const MainArea = memo(({
     setUserGuessStatus,
     setCurrentGuessData,
     currentGuessData,
+    setHintCost,
   } = useQuestionContext()
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const MainArea = memo(({
           id="playAgain"
           onClick={() => {
             setUserGuessStatus(false)
+            setHintCost(1)
           }}
         >
           Play Again?

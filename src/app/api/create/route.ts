@@ -1,5 +1,6 @@
 import OpenAI from "openai"
 import { personalities, historical, books, sportspersons } from "@/data";
+import { getData } from "../../action"
 
 const SYSTEM_ROLE = "system"
 
@@ -29,6 +30,9 @@ const getPerson = (type: string) => {
 
 export async function GET(request: Request) {
   try {
+    const data = await getData()
+    console.log(data)
+
     const { searchParams } = new URL(request.url);
 
     const type = searchParams.get("type")
